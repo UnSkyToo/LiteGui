@@ -2,9 +2,11 @@
 
 ## Introduction
 
-一个从零开始的Immediate Mode GUI工程 基于.Net Standard 2.0
+Immediate Mode GUI from scratch based on .Net Standard 2.0
 
-目前只绑定了WinForm的实现 未来期望实现更多平台
+Currently only bindings WinForm
+
+Plan more platforms in the future
 
 ----
 
