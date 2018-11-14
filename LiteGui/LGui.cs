@@ -136,6 +136,11 @@ namespace LiteGui
             LGuiPopup.Open(Title, Pos);
         }
 
+        public static void ClosePopup(string Title)
+        {
+            LGuiPopup.Close(Title);
+        }
+
         public static void Text(string Format, params object[] Args)
         {
             Text(LGuiStyle.GetColor(LGuiStyleColorIndex.Text), Format, Args);
@@ -244,6 +249,11 @@ namespace LiteGui
         public static bool ListBox(string Title, ref int ItemIndex, string[] Items, LGuiVec2 Size)
         {
             return LGuiListBox.OnProcess(Title, ref ItemIndex, Items, Size);
+        }
+
+        public static bool Combox(string Title, ref int ItemIndex, string[] Items, LGuiVec2 Size)
+        {
+            return LGuiCombox.OnProcess(Title, ref ItemIndex, Items, Size);
         }
 
         public static bool Selectable(string Text, bool Selected)

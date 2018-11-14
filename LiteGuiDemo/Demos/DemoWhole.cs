@@ -13,7 +13,9 @@ namespace LiteGuiDemo.Demos
         private string Str2_ = "123";
         private int TextureID_ = 0;
         private LGuiColor Color_ = LGuiColor.White;
-
+        private int ItemIndex = 0;
+        private string[] Items = new string[] { "item1", "item2", "item3", "item4", "item5", "item6", "item7", "item8", "item9", "item10" };
+        
         internal DemoWhole()
         {
         }
@@ -72,6 +74,8 @@ namespace LiteGuiDemo.Demos
                 LGui.ColorPicker("ColorPicker1", ref Color_);
                 LGui.EndPopup();
             }
+
+            LGui.ListBox("ListBox1", ref ItemIndex, Items, new LGuiVec2(150, 200));
 
             Value_ = LGui.CheckBox("IsShow", Value_);
 

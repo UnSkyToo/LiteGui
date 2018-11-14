@@ -3,6 +3,7 @@
 namespace LiteGui
 {
     /*
+     * Use Dear ImGui Color Style
     colors[ImGuiCol_Text]                   = ImVec4(1.00f, 1.00f, 1.00f, 1.00f);
     colors[ImGuiCol_TextDisabled]           = ImVec4(0.50f, 0.50f, 0.50f, 1.00f);
     colors[ImGuiCol_WindowBg]               = ImVec4(0.06f, 0.06f, 0.06f, 0.94f);
@@ -89,16 +90,16 @@ namespace LiteGui
 
     public enum LGuiStyleValueIndex : byte
     {
-        ControlSpacingX     = 0,
-        ControlSpacingY     = 1,
-        FrameChildSpacingX  = 2,
-        FrameChildSpacingY  = 3,
-        GroupChildSpacing   = 4,
-        GrabMinSizeX        = 5,
-        GrabMinSizeY        = 6,
-        RadioButtonRadius   = 7,
-        CheckBoxSize        = 8,
-        SliderSize          = 9,
+        ControlSpacingX     = 00,
+        ControlSpacingY     = 01,
+        FrameChildSpacingX  = 02,
+        FrameChildSpacingY  = 03,
+        GroupChildSpacing   = 04,
+        GrabMinSizeX        = 05,
+        GrabMinSizeY        = 06,
+        RadioButtonRadius   = 07,
+        CheckBoxSize        = 08,
+        SliderSize          = 09,
     }
 
     internal class LGuiStyleValueBackup
@@ -162,16 +163,16 @@ namespace LiteGui
 
         private static void InitDefaultValue()
         {
-            Values[(int)LGuiStyleValueIndex.ControlSpacingX]    = 5.0f;
-            Values[(int)LGuiStyleValueIndex.ControlSpacingY]    = 5.0f;
-            Values[(int)LGuiStyleValueIndex.FrameChildSpacingX] = 5.0f;
-            Values[(int)LGuiStyleValueIndex.FrameChildSpacingY] = 5.0f;
-            Values[(int)LGuiStyleValueIndex.GroupChildSpacing]  = 20.0f;
-            Values[(int)LGuiStyleValueIndex.GrabMinSizeX]       = 10.0f;
-            Values[(int)LGuiStyleValueIndex.GrabMinSizeY]       = 10.0f;
-            Values[(int)LGuiStyleValueIndex.RadioButtonRadius]  = 10.0f;
-            Values[(int)LGuiStyleValueIndex.CheckBoxSize]       = 20.0f;
-            Values[(int)LGuiStyleValueIndex.SliderSize]         = 16.0f;
+            Values[(int)LGuiStyleValueIndex.ControlSpacingX]        = 5.0f;
+            Values[(int)LGuiStyleValueIndex.ControlSpacingY]        = 5.0f;
+            Values[(int)LGuiStyleValueIndex.FrameChildSpacingX]     = 5.0f;
+            Values[(int)LGuiStyleValueIndex.FrameChildSpacingY]     = 5.0f;
+            Values[(int)LGuiStyleValueIndex.GroupChildSpacing]      = 20.0f;
+            Values[(int)LGuiStyleValueIndex.GrabMinSizeX]           = 10.0f;
+            Values[(int)LGuiStyleValueIndex.GrabMinSizeY]           = 10.0f;
+            Values[(int)LGuiStyleValueIndex.RadioButtonRadius]      = 10.0f;
+            Values[(int)LGuiStyleValueIndex.CheckBoxSize]           = 20.0f;
+            Values[(int)LGuiStyleValueIndex.SliderSize]             = 16.0f;
         }
 
         internal static LGuiColor GetColor(LGuiStyleColorIndex Index)

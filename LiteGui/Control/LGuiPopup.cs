@@ -9,37 +9,39 @@ namespace LiteGui.Control
             Open(Title, LGuiContext.IO.MousePos + LGuiStyle.GetFrameChildSpacing());
         }
 
+        internal static void Close(string Title)
+        {
+            LGuiContextCache.SetPopupOpen(Title, false);
+        }
+
         internal static void Open(string Title, LGuiVec2 Pos)
         {
-            var FullTitle = $"{LGuiContext.GetCurrentFrame().Title}/{Title}";
-            LGuiContextCache.SetPopupOpen(FullTitle, true);
-            LGuiContextCache.SetPopupPos(FullTitle, Pos);
+            LGuiContextCache.SetPopupOpen(Title, true);
+            LGuiContextCache.SetPopupPos(Title, Pos);
         }
 
         internal static bool Begin(string Title, LGuiVec2 Size)
         {
-            var FullTitle = $"{LGuiContext.GetCurrentFrame().Title}/{Title}";
-            var Rect = new LGuiRect(LGuiContextCache.GetPopupPos(FullTitle), Size);
+            var Rect = new LGuiRect(LGuiContextCache.GetPopupPos(Title), Size);
             return Begin(Title, Rect);
         }
 
         internal static bool Begin(string Title, LGuiRect Rect)
         {
-            var FullTitle = $"{LGuiContext.GetCurrentFrame().Title}/{Title}";
-            var ID = LGuiHash.CalculateID(FullTitle);
+            var ID = LGuiHash.CalculateID(Title);
             LGuiContext.SetPreviousControlID(ID);
             
             if (!LGuiMisc.CheckVisible(ref Rect))
             {
                 return false;
             }
-            
-            var IsOpen = LGuiContextCache.GetPopupOpen(FullTitle);
+
+            var IsOpen = LGuiContextCache.GetPopupOpen(Title);
             if (IsOpen)
             {
                 if (LGuiContext.IO.IsMouseClick(LGuiMouseButtons.Left) && !LGuiMisc.Contains(ref Rect, ref LGuiContext.IO.MousePos))
                 {
-                    LGuiContextCache.SetPopupOpen(FullTitle, false);
+                    LGuiContextCache.SetPopupOpen(Title, false);
                     return false;
                 }
 
