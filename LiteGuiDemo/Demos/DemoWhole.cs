@@ -77,6 +77,8 @@ namespace LiteGuiDemo.Demos
 
             LGui.ListBox("ListBox1", ref ItemIndex, Items, new LGuiVec2(150, 200));
 
+            LGui.Combox("Combox1", ref ItemIndex, Items, 150, 200);
+
             Value_ = LGui.CheckBox("IsShow", Value_);
 
             //LGui.BeginLayout(LGuiLayoutMode.Horizontal);

@@ -4,13 +4,13 @@ namespace LiteGui.Control
 {
     internal static class LGuiCombox
     {
-        internal static bool OnProcess(string Title, ref int ItemIndex, string[] Items, LGuiVec2 Size)
+        internal static bool OnProcess(string Title, ref int ItemIndex, string[] Items, float Width, float PopupHeight)
         {
-            var Rect = LGuiLayout.DoLayout(Size);
-            return OnProcess(Title, ref ItemIndex, Items, Rect);
+            var Rect = LGuiLayout.DoLayout(new LGuiVec2(Width, LGuiContext.Font.FontHeight));
+            return OnProcess(Title, ref ItemIndex, Items, Rect, PopupHeight);
         }
 
-        internal static bool OnProcess(string Title, ref int ItemIndex, string[] Items, LGuiRect Rect)
+        internal static bool OnProcess(string Title, ref int ItemIndex, string[] Items, LGuiRect Rect, float PopupHeight)
         {
             var ID = LGuiHash.CalculateID(Title);
             LGuiContext.SetPreviousControlID(ID);
@@ -19,16 +19,14 @@ namespace LiteGui.Control
             {
                 return false;
             }
-
             
-            var TitleRect = new LGuiRect(Rect.Pos, new LGuiVec2(Rect.Width, LGuiContext.Font.FontHeight));
             var TitleBgColorIndex = LGuiContext.ActiveID == ID ? LGuiStyleColorIndex.FrameActived :
                 LGuiContext.HoveredID == ID ? LGuiStyleColorIndex.FrameHovered : LGuiStyleColorIndex.Frame;
 
-            LGuiMisc.CheckAndSetContextID(ref TitleRect, ID);
+            LGuiMisc.CheckAndSetContextID(ref Rect, ID);
 
-            LGuiGraphics.DrawRect(TitleRect, TitleBgColorIndex, true);
-            LGuiGraphics.DrawText(Items[ItemIndex], TitleRect.Pos + new LGuiVec2(LGuiStyle.GetValue(LGuiStyleValueIndex.ControlSpacingX), 0), LGuiStyleColorIndex.Text);
+            LGuiGraphics.DrawRect(Rect, TitleBgColorIndex, true);
+            LGuiGraphics.DrawText(Items[ItemIndex], Rect.Pos + new LGuiVec2(LGuiStyle.GetValue(LGuiStyleValueIndex.ControlSpacingX), 0), LGuiStyleColorIndex.Text);
 
             var GrabRect = new LGuiRect(Rect.Right - LGuiContext.Font.FontHeight, Rect.Y, LGuiContext.Font.FontHeight, LGuiContext.Font.FontHeight);
             var GrabBgColorIndex = LGuiContext.ActiveID == ID ? LGuiStyleColorIndex.ButtonActived :
@@ -40,7 +38,7 @@ namespace LiteGui.Control
                 new LGuiVec2(GrabRect.CenterX, GrabRect.Bottom - 4),
                 LGuiStyle.GetColor(LGuiStyleColorIndex.Text), true);
 
-            LGuiGraphics.DrawRect(TitleRect, LGuiStyleColorIndex.Border, false);
+            LGuiGraphics.DrawRect(Rect, LGuiStyleColorIndex.Border, false);
 
             var PopupID = $"{Title}_ItemPopup";
             if (LGuiMisc.CheckAndSetFocusID(ID))
@@ -49,7 +47,7 @@ namespace LiteGui.Control
             }
 
             var NewIndex = ItemIndex;
-            if (LGuiPopup.Begin(PopupID, new LGuiRect(Rect.X, TitleRect.Bottom + 1, Rect.Width, Rect.Height)))
+            if (LGuiPopup.Begin(PopupID, new LGuiRect(Rect.X, Rect.Bottom + 1, Rect.Width, PopupHeight)))
             {
                 var ItemWidth = Rect.Width - LGuiStyle.GetValue(LGuiStyleValueIndex.FrameChildSpacingX) * 2.0f - LGuiStyle.GetValue(LGuiStyleValueIndex.SliderSize);
                 for (var Index = 0; Index < Items.Length; ++Index)

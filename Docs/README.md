@@ -47,6 +47,7 @@ Plan more platforms in the future
 19. [x] ColorPikcer
 20. [x] Popup
 21. [x] Selectable
+22. [x] Combox
 
 ## Usage
 
@@ -81,3 +82,8 @@ LGui.Text("Current Item : {0}", Items[ItemIndex]);
 ```
 
 ![Usage2](https://github.com/UnSkyToo/LiteGui/blob/master/Docs/Images/LiteGui_Usage_02.gif)
+
+
+Demo
+
+![UsageWhole](https://github.com/UnSkyToo/LiteGui/blob/master/Docs/Images/LiteGui_Usage_Whole.gif)

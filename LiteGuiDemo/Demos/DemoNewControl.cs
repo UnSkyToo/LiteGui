@@ -26,7 +26,7 @@ namespace LiteGuiDemo.Demos
         
         internal override void Render()
         {
-            LGui.Combox("Combox", ref ItemIndex, Items, new LGuiVec2(100, 150));
+            LGui.Combox("Combox", ref ItemIndex, Items, 100, 150);
         }
     }
 }

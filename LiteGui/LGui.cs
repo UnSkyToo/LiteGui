@@ -250,10 +250,10 @@ namespace LiteGui
         {
             return LGuiListBox.OnProcess(Title, ref ItemIndex, Items, Size);
         }
-
-        public static bool Combox(string Title, ref int ItemIndex, string[] Items, LGuiVec2 Size)
+        
+        public static bool Combox(string Title, ref int ItemIndex, string[] Items, float Width, float PopupHeight)
         {
-            return LGuiCombox.OnProcess(Title, ref ItemIndex, Items, Size);
+            return LGuiCombox.OnProcess(Title, ref ItemIndex, Items, Width, PopupHeight);
         }
 
         public static bool Selectable(string Text, bool Selected)
