@@ -60,7 +60,7 @@ if (LGui.Button("Click Me"))
 LGui.Slider("SliderV", ref Value, 0, 10, 1);
 ```
 
-![Usage1](https://github.com/UnSkyToo/LiteGui/blob/master/Docs/LiteGui_Usage_01.png)
+![Usage1](https://github.com/UnSkyToo/LiteGui/blob/master/Docs/Images/LiteGui_Usage_01.png)
 
 ```c#
 if (LGui.ColorButton("ColorButton1", Color, new LGuiVec2(30, 30)))
@@ -78,4 +78,4 @@ LGui.ListBox("ListBox", ref ItemIndex, Items, new LGuiVec2(100, 150));
 LGui.Text("Current Item : {0}", Items[ItemIndex]);
 ```
 
-![Usage1](https://github.com/UnSkyToo/LiteGui/blob/master/Docs/LiteGui_Usage_02.gif)
+![Usage1](https://github.com/UnSkyToo/LiteGui/blob/master/Docs/Images/LiteGui_Usage_02.gif)
