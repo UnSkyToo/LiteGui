@@ -1,0 +1,12 @@
+E:\Projects\Git\LiteGui\LiteGuiDemo\bin\Debug\LiteGuiDemo.exe.config
+E:\Projects\Git\LiteGui\LiteGuiDemo\bin\Debug\LiteGuiDemo.exe
+E:\Projects\Git\LiteGui\LiteGuiDemo\bin\Debug\LiteGuiDemo.pdb
+E:\Projects\Git\LiteGui\LiteGuiDemo\bin\Debug\LiteGui.dll
+E:\Projects\Git\LiteGui\LiteGuiDemo\bin\Debug\LiteGui.pdb
+E:\Projects\Git\LiteGui\LiteGuiDemo\obj\Debug\LiteGuiDemo.csprojAssemblyReference.cache
+E:\Projects\Git\LiteGui\LiteGuiDemo\obj\Debug\LiteGuiDemo.csproj.CoreCompileInputs.cache
+E:\Projects\Git\LiteGui\LiteGuiDemo\obj\Debug\LiteGuiDemo.csproj.CopyComplete
+E:\Projects\Git\LiteGui\LiteGuiDemo\obj\Debug\LiteGuiDemo.exe
+E:\Projects\Git\LiteGui\LiteGuiDemo\obj\Debug\LiteGuiDemo.pdb
+E:\Projects\Git\LiteGui\LiteGuiDemo\obj\Debug\LiteGuiDemo.AppForm.resources
+E:\Projects\Git\LiteGui\LiteGuiDemo\obj\Debug\LiteGuiDemo.csproj.GenerateResource.cache
