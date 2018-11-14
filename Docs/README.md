@@ -1,14 +1,16 @@
 # LiteGui
 
-## 介绍
+## Introduction
 
-一个从零开始的Immediate Mode GUI工程 基于.Net Standard 2.0
+Immediate Mode GUI from scratch based on .Net Standard 2.0
 
-目前只绑定了WinForm的实现 未来期望实现更多平台
+Currently only bindings WinForm
+
+Plan more platforms in the future
 
 ----
 
-## 计划
+## Plan
 
 1. [x] Text
 2. [x] Button
@@ -46,7 +48,7 @@
 20. [x] Popup
 21. [x] Selectable
 
-## 用法
+## Usage
 
 Use LGui.XXX() between LGui.Begin() and LGui.End() The next examples to omit this part and variable define
 
@@ -78,4 +80,4 @@ LGui.ListBox("ListBox", ref ItemIndex, Items, new LGuiVec2(100, 150));
 LGui.Text("Current Item : {0}", Items[ItemIndex]);
 ```
 
-![Usage1](https://github.com/UnSkyToo/LiteGui/blob/master/Docs/Images/LiteGui_Usage_02.gif)
+![Usage2](https://github.com/UnSkyToo/LiteGui/blob/master/Docs/Images/LiteGui_Usage_02.gif)
