@@ -1,9 +1,0 @@
-E:\Projects\Git\LiteGui\LiteGui\bin\Debug\netstandard2.0\LiteGui.deps.json
-E:\Projects\Git\LiteGui\LiteGui\bin\Debug\netstandard2.0\LiteGui.dll
-E:\Projects\Git\LiteGui\LiteGui\bin\Debug\netstandard2.0\LiteGui.pdb
-E:\Projects\Git\LiteGui\LiteGui\obj\Debug\netstandard2.0\LiteGui.csprojAssemblyReference.cache
-E:\Projects\Git\LiteGui\LiteGui\obj\Debug\netstandard2.0\LiteGui.csproj.CoreCompileInputs.cache
-E:\Projects\Git\LiteGui\LiteGui\obj\Debug\netstandard2.0\LiteGui.AssemblyInfoInputs.cache
-E:\Projects\Git\LiteGui\LiteGui\obj\Debug\netstandard2.0\LiteGui.AssemblyInfo.cs
-E:\Projects\Git\LiteGui\LiteGui\obj\Debug\netstandard2.0\LiteGui.dll
-E:\Projects\Git\LiteGui\LiteGui\obj\Debug\netstandard2.0\LiteGui.pdb
