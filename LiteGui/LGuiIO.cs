@@ -141,8 +141,8 @@ namespace LiteGui
                 if (MouseCurState[Index])
                 {
                     MousePreDeltaPos = MouseCurDeltaPos;
-                    MouseCurDeltaPos.X = MouseClickPos[Index].X - X;
-                    MouseCurDeltaPos.Y = MouseClickPos[Index].Y - Y;
+                    MouseCurDeltaPos.X = X - MouseClickPos[Index].X;
+                    MouseCurDeltaPos.Y = Y - MouseClickPos[Index].Y;
                 }
 
                 MousePos.X = X;

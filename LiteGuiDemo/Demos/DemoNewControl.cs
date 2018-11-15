@@ -4,9 +4,6 @@ namespace LiteGuiDemo.Demos
 {
     internal class DemoNewControl : DemoBase
     {
-        private int ItemIndex = 0;
-        private string[] Items = new string[] {"item1", "item2", "item3", "item4", "item5", "item6", "item7", "item8", "item9", "item10"};
-
         internal DemoNewControl()
         {
         }
@@ -26,7 +23,19 @@ namespace LiteGuiDemo.Demos
         
         internal override void Render()
         {
-            LGui.Combox("Combox", ref ItemIndex, Items, 100, 150);
+            if (LGui.BeginWindow("First Window", new LGuiVec2(300, 300)))
+            {
+                LGui.Button("Click Me");
+                LGui.EndWindow();
+            }
+
+            if (LGui.BeginWindow("Second Window", new LGuiVec2(300, 300)))
+            {
+                LGui.Button("Click Me");
+                LGui.EndWindow();
+            }
+
+            LGui.Text(LGuiColor.Red, "aaa");
         }
     }
 }

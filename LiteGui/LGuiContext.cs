@@ -72,6 +72,7 @@ namespace LiteGui
         internal static int HoveredID = 0;
         internal static int FrameCount = 0;
         internal static int PreviousControlID = 0;
+        internal static int WindowID = 0;
         internal static LGuiRect ActiveRect = LGuiRect.Zero;
 
         internal static LGuiFont Font = LGuiFont.Default;
@@ -117,6 +118,7 @@ namespace LiteGui
             HoveredID = 0;
             FrameCount = 0;
             PreviousControlID = 0;
+            WindowID = 0;
             ActiveRect = LGuiRect.Zero;
 
             Font = LGuiFont.Default;
@@ -217,6 +219,8 @@ namespace LiteGui
         internal static Dictionary<string, LGuiColor> ColorPickerHsv = new Dictionary<string, LGuiColor>();
         internal static Dictionary<string, bool> PopupOpen = new Dictionary<string, bool>();
         internal static Dictionary<string, LGuiVec2> PopupPos = new Dictionary<string, LGuiVec2>();
+        internal static Dictionary<string, LGuiRect> WindowRect = new Dictionary<string, LGuiRect>();
+        internal static Dictionary<string, LGuiVec2> WindowOrginPos = new Dictionary<string, LGuiVec2>();
 
         internal static void Clear()
         {
@@ -226,6 +230,8 @@ namespace LiteGui
             ColorPickerHsv.Clear();
             PopupOpen.Clear();
             PopupPos.Clear();
+            WindowRect.Clear();
+            WindowOrginPos.Clear();
         }
 
         internal static LGuiVec2 GetFrameOffset(string Title)
@@ -357,6 +363,50 @@ namespace LiteGui
             else
             {
                 PopupPos.Add(Title, Pos);
+            }
+        }
+
+        internal static LGuiRect GetWindowRect(string Title)
+        {
+            if (WindowRect.ContainsKey(Title))
+            {
+                return WindowRect[Title];
+            }
+
+            return LGuiRect.Zero;
+        }
+
+        internal static void SetWindowRect(string Title, LGuiRect Rect)
+        {
+            if (WindowRect.ContainsKey(Title))
+            {
+                WindowRect[Title] = Rect;
+            }
+            else
+            {
+                WindowRect.Add(Title, Rect);
+            }
+        }
+
+        internal static LGuiVec2 GetWindowOrginPos(string Title)
+        {
+            if (WindowOrginPos.ContainsKey(Title))
+            {
+                return WindowOrginPos[Title];
+            }
+
+            return LGuiVec2.Zero;
+        }
+
+        internal static void SetWindowOrginPos(string Title, LGuiVec2 Pos)
+        {
+            if (WindowOrginPos.ContainsKey(Title))
+            {
+                WindowOrginPos[Title] = Pos;
+            }
+            else
+            {
+                WindowOrginPos.Add(Title, Pos);
             }
         }
     }

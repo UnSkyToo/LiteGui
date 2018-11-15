@@ -141,6 +141,16 @@ namespace LiteGui
             LGuiPopup.Close(Title);
         }
 
+        public static bool BeginWindow(string Title, LGuiVec2 Size)
+        {
+            return LGuiWindow.Begin(Title, Size);
+        }
+
+        public static void EndWindow()
+        {
+            LGuiWindow.End();
+        }
+
         public static void Text(string Format, params object[] Args)
         {
             Text(LGuiStyle.GetColor(LGuiStyleColorIndex.Text), Format, Args);
