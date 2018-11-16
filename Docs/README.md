@@ -54,7 +54,7 @@ Plan more platforms in the future
 
 Use LGui.XXX() between LGui.Begin() and LGui.End() The next examples to omit this part and variable define
 
-Code:
+Code
 ```c#
 LGui.Text("Lite Gui {0}", Value);
 if (LGui.Button("Click Me"))
@@ -64,10 +64,10 @@ if (LGui.Button("Click Me"))
 LGui.Slider("SliderV", ref Value, 0, 10, 1);
 ```
 
-Result:
+Result
 ![Usage1](https://github.com/UnSkyToo/LiteGui/blob/master/Docs/Images/LiteGui_Usage_01.png)
 
-Code:
+Code
 ```c#
 if (LGui.ColorButton("ColorButton1", Color, new LGuiVec2(30, 30)))
 {
@@ -84,13 +84,11 @@ LGui.ListBox("ListBox", ref ItemIndex, Items, new LGuiVec2(100, 150));
 LGui.Text("Current Item : {0}", Items[ItemIndex]);
 ```
 
-Result:
+Result
 ![Usage2](https://github.com/UnSkyToo/LiteGui/blob/master/Docs/Images/LiteGui_Usage_02.gif)
-
 
 MemoryEditor & Window
 ![Usage3](https://github.com/UnSkyToo/LiteGui/blob/master/Docs/Images/LiteGui_Usage_03.gif)
 
 Demo
-
 ![UsageWhole](https://github.com/UnSkyToo/LiteGui/blob/master/Docs/Images/LiteGui_Usage_Whole.gif)
