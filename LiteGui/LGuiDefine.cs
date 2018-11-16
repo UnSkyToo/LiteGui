@@ -164,6 +164,15 @@ namespace LiteGui
         EnterReturnsTrue = 1 << 13,
     }
 
+    [Flags]
+    public enum LGuiWindowFlags : uint
+    {
+        None = 0,
+        NoMove = 1 << 0,
+        NoTitle = 1 << 1,
+        NoFocus = 1 << 2,
+    }
+
     public struct LGuiVec2
     {
         public float X;

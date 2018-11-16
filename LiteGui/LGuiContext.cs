@@ -65,12 +65,16 @@ namespace LiteGui
         internal string Title = string.Empty;
         internal int ID = 0;
         internal LGuiRect Rect = LGuiRect.Zero;
+        internal bool Moveable = true;
+        internal bool Focusable = true;
 
-        internal LGuiWindowContext(string Title, int ID, LGuiRect Rect)
+        internal LGuiWindowContext(string Title, int ID, LGuiRect Rect, bool Moveable, bool Focusable)
         {
             this.Title = Title;
             this.ID = ID;
             this.Rect = Rect;
+            this.Moveable = Moveable;
+            this.Focusable = Focusable;
         }
     }
 

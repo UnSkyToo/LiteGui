@@ -141,14 +141,14 @@ namespace LiteGui
             LGuiPopup.Close(Title);
         }
 
-        public static bool BeginWindow(string Title, LGuiVec2 Size)
+        public static bool BeginWindow(string Title, LGuiVec2 Size, LGuiWindowFlags Flags = LGuiWindowFlags.None)
         {
-            return LGuiWindow.Begin(Title, Size);
+            return LGuiWindow.Begin(Title, Size, Flags);
         }
 
-        public static bool BeginWindow(string Title, LGuiRect Rect)
+        public static bool BeginWindow(string Title, LGuiRect Rect, LGuiWindowFlags Flags = LGuiWindowFlags.None)
         {
-            return LGuiWindow.Begin(Title, Rect);
+            return LGuiWindow.Begin(Title, Rect, Flags);
         }
 
         public static void EndWindow()
@@ -166,14 +166,14 @@ namespace LiteGui
             LGuiText.OnProcess(Color, Format, Args);
         }
 
-        public static bool Button(string Title)
+        public static bool Button(string Title, LGuiButtonFlags Flags = LGuiButtonFlags.None)
         {
-            return LGuiButton.OnProcess(Title, LGuiButtonFlags.None);
+            return LGuiButton.OnProcess(Title, Flags);
         }
 
-        public static bool Button(string Title, LGuiVec2 Size)
+        public static bool Button(string Title, LGuiVec2 Size, LGuiButtonFlags Flags = LGuiButtonFlags.None)
         {
-            return LGuiButton.OnProcess(Title, Size, LGuiButtonFlags.None);
+            return LGuiButton.OnProcess(Title, Size, Flags);
         }
         
         public static bool InvisibleButton(string Title, LGuiVec2 Size)
@@ -186,7 +186,7 @@ namespace LiteGui
             return LGuiColorButton.OnProcess(Title, Color, Size);
         }
         
-        public static bool InputText(string Title, ref string Value, uint MaxLength, LGuiVec2 Size, LGuiInputTextFlags Flags)
+        public static bool InputText(string Title, ref string Value, uint MaxLength, LGuiVec2 Size, LGuiInputTextFlags Flags = LGuiInputTextFlags.None)
         {
             return LGuiInputText.OnProcess(Title, ref Value, MaxLength, Size, Flags);
         }
