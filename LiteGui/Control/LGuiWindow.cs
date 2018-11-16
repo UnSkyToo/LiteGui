@@ -6,23 +6,22 @@ namespace LiteGui.Control
     {
         internal static bool Begin(string Title, LGuiVec2 Size)
         {
-            var FullTitle = $"{LGuiContext.GetCurrentFrame().Title}/{Title}";
-            var Rect = LGuiContextCache.GetWindowRect(FullTitle);
-            if (Rect.Width == 0 || Rect.Height == 0)
-            {
-                Rect.Pos = LGuiStyle.GetFrameChildSpacing();
-                Rect.Size = Size;
-                LGuiContextCache.SetWindowRect(FullTitle, Rect);
-            }
-
-            return Begin(Title, Rect);
+            return Begin(Title, new LGuiRect(LGuiLayout.GetCurrentLayoutContext().CursorPos, Size));
         }
 
-        internal static bool Begin(string Title, LGuiRect Rect)
+        internal static bool Begin(string Title, LGuiRect InitRect)
         {
             if (LGuiContext.CurrentWindow != null)
             {
                 return false;
+            }
+
+            var FullTitle = $"{LGuiContext.GetCurrentFrame().Title}/{Title}";
+            var Rect = LGuiContextCache.GetWindowRect(FullTitle);
+            if (Rect.Width == 0 || Rect.Height == 0)
+            {
+                Rect = InitRect;
+                LGuiContextCache.SetWindowRect(FullTitle, Rect);
             }
 
             if (!LGuiMisc.CheckVisible(ref Rect))
@@ -30,9 +29,7 @@ namespace LiteGui.Control
                 return false;
             }
 
-            var FullTitle = $"{LGuiContext.GetCurrentFrame().Title}/{Title}";
             var ID = LGuiHash.Calculate(FullTitle);
-
             
             LGuiContext.CurrentWindow = new LGuiWindowContext(FullTitle, ID, Rect);
             if (LGuiContext.FocusWindow == null)
@@ -54,7 +51,7 @@ namespace LiteGui.Control
                 new LGuiVec2(TitleRect.X + 10, TitleRect.Bottom - 5),
                 LGuiStyle.GetColor(LGuiStyleColorIndex.Text), true);
             LGuiGraphics.DrawRect(TitleRect, LGuiStyleColorIndex.Border, false);
-
+            
             LGuiFrame.Begin(Title, ContextRect, false);
             return true;
         }

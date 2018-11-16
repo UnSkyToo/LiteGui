@@ -146,6 +146,11 @@ namespace LiteGui
             return LGuiWindow.Begin(Title, Size);
         }
 
+        public static bool BeginWindow(string Title, LGuiRect Rect)
+        {
+            return LGuiWindow.Begin(Title, Rect);
+        }
+
         public static void EndWindow()
         {
             LGuiWindow.End();

@@ -4,6 +4,7 @@ namespace LiteGuiDemo.Demos
 {
     internal class DemoNewControl : DemoBase
     {
+        private LGuiColor Color;
         internal DemoNewControl()
         {
         }
@@ -29,11 +30,13 @@ namespace LiteGuiDemo.Demos
                 {
                     System.Console.WriteLine("Window1");
                 }
-                LGui.SetToolTips("tips");
+
+                LGui.ColorPicker("asd", ref Color);
+
                 LGui.EndWindow();
             }
 
-            if (LGui.BeginWindow("Second Window", new LGuiVec2(300, 300)))
+            if (LGui.BeginWindow("Second Window", new LGuiRect(400, 100, 300, 300)))
             {
                 if (LGui.Button("Click Me"))
                 {

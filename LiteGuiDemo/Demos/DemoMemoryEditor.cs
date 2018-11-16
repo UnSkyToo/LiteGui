@@ -133,6 +133,15 @@ namespace LiteGuiDemo.Demos
 
         internal override void Tick(float Seconds)
         {
+            var R = new Random((int)DateTime.Now.Ticks);
+
+            for (var Index = 0; Index < 300; ++Index)
+            {
+                if (R.NextDouble() < 0.005f)
+                {
+                    MemoryBuffer[Index] = (byte)R.Next(byte.MinValue, byte.MaxValue);
+                }
+            }
         }
 
         internal override void Render()
