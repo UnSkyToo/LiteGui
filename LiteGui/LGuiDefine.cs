@@ -19,6 +19,10 @@ namespace LiteGui
         Normal,
         High,
         VeryHigh,
+        Window,
+        FocusWindow,
+        Popup,
+        Tips,
     }
     
     public enum LGuiKeys : byte

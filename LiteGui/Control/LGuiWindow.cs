@@ -20,6 +20,11 @@ namespace LiteGui.Control
 
         internal static bool Begin(string Title, LGuiRect Rect)
         {
+            if (LGuiContext.CurrentWindow != null)
+            {
+                return false;
+            }
+
             if (!LGuiMisc.CheckVisible(ref Rect))
             {
                 return false;
@@ -28,7 +33,14 @@ namespace LiteGui.Control
             var FullTitle = $"{LGuiContext.GetCurrentFrame().Title}/{Title}";
             var ID = LGuiHash.Calculate(FullTitle);
 
-            LGuiGraphics.SetCurrentLevel(LGuiContext.WindowID == ID ? LGuiCommandLevel.VeryHigh : LGuiCommandLevel.High);
+            
+            LGuiContext.CurrentWindow = new LGuiWindowContext(FullTitle, ID, Rect);
+            if (LGuiContext.FocusWindow == null)
+            {
+                LGuiContext.FocusWindow = new LGuiWindowContext(FullTitle, ID, Rect);
+            }
+
+            LGuiGraphics.SetCurrentLevel(LGuiContext.FocusWindow.ID == ID ? LGuiCommandLevel.FocusWindow : LGuiCommandLevel.Window);
 
             var TitleRect = new LGuiRect(Rect.Pos, new LGuiVec2(Rect.Width, LGuiContext.Font.FontHeight));
             var ContextRect = new LGuiRect(Rect.X, TitleRect.Bottom, Rect.Width, Rect.Height - TitleRect.Height);
@@ -50,26 +62,42 @@ namespace LiteGui.Control
         internal static void End()
         {
             var Title = LGuiContext.GetCurrentFrame().Title;
+            var ID = LGuiHash.Calculate(Title);
+
             LGuiFrame.End();
             LGuiGraphics.RestoreCurrentLevel();
 
-            var ID = LGuiHash.Calculate(Title);
+            LGuiContext.CurrentWindow = null;
+            // Ignore other window when mousepos in FocusWindow
+            if (LGuiContext.FocusWindow.ID != ID && LGuiMisc.Contains(ref LGuiContext.FocusWindow.Rect, ref LGuiContext.IO.MousePos))
+            {
+                return;
+            }
+
             var Rect = LGuiContextCache.GetWindowRect(Title);
-            LGuiMisc.CheckAndSetContextID(ref Rect, ID);
+            if (!LGuiMisc.Contains(ref Rect, ref LGuiContext.IO.MousePos))
+            {
+                return;
+            }
             
             if (LGuiContext.IO.IsMouseClick(LGuiMouseButtons.Left))
             {
+                if (LGuiContext.FocusWindow.ID != ID)
+                {
+                    LGuiContext.FocusWindow = new LGuiWindowContext(Title, ID, Rect);
+                }
+
                 LGuiContextCache.SetWindowOrginPos(Title, Rect.Pos);
             }
 
+            LGuiMisc.CheckAndSetContextID(ref Rect, ID);
             if (LGuiContext.ActiveID == ID && LGuiContext.IO.IsMouseDown(LGuiMouseButtons.Left))
             {
                 var WindowOriginPos = LGuiContextCache.GetWindowOrginPos(Title);
                 var MovePos = LGuiContext.IO.GetMouseMovePos();
                 Rect.Pos = WindowOriginPos + MovePos;
                 LGuiContextCache.SetWindowRect(Title, Rect);
-
-                LGuiContext.WindowID = ID;
+                LGuiContext.FocusWindow.Rect = Rect;
             }
         }
     }

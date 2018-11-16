@@ -25,13 +25,20 @@ namespace LiteGuiDemo.Demos
         {
             if (LGui.BeginWindow("First Window", new LGuiVec2(300, 300)))
             {
-                LGui.Button("Click Me");
+                if (LGui.Button("Click Me"))
+                {
+                    System.Console.WriteLine("Window1");
+                }
+                LGui.SetToolTips("tips");
                 LGui.EndWindow();
             }
 
             if (LGui.BeginWindow("Second Window", new LGuiVec2(300, 300)))
             {
-                LGui.Button("Click Me");
+                if (LGui.Button("Click Me"))
+                {
+                    System.Console.WriteLine("Window2");
+                }
                 LGui.EndWindow();
             }
 

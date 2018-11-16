@@ -41,12 +41,16 @@ namespace LiteGui.Graphics
         
         internal static void Begin()
         {
-            CommandList_ = new LGuiCommandList[5];
+            CommandList_ = new LGuiCommandList[9];
             CommandList_[(int)LGuiCommandLevel.VeryLow] = new LGuiCommandList();
             CommandList_[(int)LGuiCommandLevel.Low] = new LGuiCommandList();
             CommandList_[(int)LGuiCommandLevel.Normal] = new LGuiCommandList();
             CommandList_[(int)LGuiCommandLevel.High] = new LGuiCommandList();
             CommandList_[(int)LGuiCommandLevel.VeryHigh] = new LGuiCommandList();
+            CommandList_[(int)LGuiCommandLevel.Window] = new LGuiCommandList();
+            CommandList_[(int)LGuiCommandLevel.FocusWindow] = new LGuiCommandList();
+            CommandList_[(int)LGuiCommandLevel.Popup] = new LGuiCommandList();
+            CommandList_[(int)LGuiCommandLevel.Tips] = new LGuiCommandList();
 
             CommandLevelStack_ = new Stack<LGuiCommandLevel>();
             CurrentLevel_ = LGuiCommandLevel.Normal;
@@ -62,6 +66,10 @@ namespace LiteGui.Graphics
             CombineCommandList_.AddCommandList(CommandList_[(int)LGuiCommandLevel.Normal]);
             CombineCommandList_.AddCommandList(CommandList_[(int)LGuiCommandLevel.High]);
             CombineCommandList_.AddCommandList(CommandList_[(int)LGuiCommandLevel.VeryHigh]);
+            CombineCommandList_.AddCommandList(CommandList_[(int)LGuiCommandLevel.Window]);
+            CombineCommandList_.AddCommandList(CommandList_[(int)LGuiCommandLevel.FocusWindow]);
+            CombineCommandList_.AddCommandList(CommandList_[(int)LGuiCommandLevel.Popup]);
+            CombineCommandList_.AddCommandList(CommandList_[(int)LGuiCommandLevel.Tips]);
 
             CombineCommandList_.End();
             CombineCommandList_.ExecuteAll(CommandExecutor_);

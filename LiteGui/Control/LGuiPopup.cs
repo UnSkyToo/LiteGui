@@ -45,7 +45,7 @@ namespace LiteGui.Control
                     return false;
                 }
 
-                LGuiGraphics.SetCurrentLevel(LGuiCommandLevel.High);
+                LGuiGraphics.SetCurrentLevel(LGuiCommandLevel.Popup);
                 LGuiGraphics.DrawRect(Rect, LGuiStyleColorIndex.Frame, true);
                 LGuiFrame.Begin(Title, Rect, false);
             }

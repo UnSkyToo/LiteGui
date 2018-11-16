@@ -194,6 +194,14 @@
                 return;
             }
 
+            if (LGuiContext.FocusWindow != null && LGuiContext.CurrentWindow != null)
+            {
+                if (LGuiContext.CurrentWindow.ID != LGuiContext.FocusWindow.ID && Contains(ref LGuiContext.FocusWindow.Rect, ref LGuiContext.IO.MousePos))
+                {
+                    return;
+                }
+            }
+
             if (Contains(ref Rect, ref LGuiContext.IO.MousePos))
             {
                 LGuiContext.HoveredID = ID;

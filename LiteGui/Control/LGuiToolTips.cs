@@ -14,7 +14,7 @@ namespace LiteGui.Control
             var Pos = LGuiContext.IO.MousePos + new LGuiVec2(20, 5);
             var Rect = new LGuiRect(Pos, Size);
 
-            LGuiGraphics.SetCurrentLevel(LGuiCommandLevel.VeryHigh);
+            LGuiGraphics.SetCurrentLevel(LGuiCommandLevel.Tips);
             LGuiGraphics.DrawRect(Rect, LGuiStyleColorIndex.Frame, true);
             LGuiFrame.Begin(LGuiSettings.DefaultToolTipsTitle, Rect, false);
             return true;

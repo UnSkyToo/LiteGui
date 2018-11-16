@@ -60,9 +60,25 @@ namespace LiteGui
         }
     }
 
+    internal class LGuiWindowContext
+    {
+        internal string Title = string.Empty;
+        internal int ID = 0;
+        internal LGuiRect Rect = LGuiRect.Zero;
+
+        internal LGuiWindowContext(string Title, int ID, LGuiRect Rect)
+        {
+            this.Title = Title;
+            this.ID = ID;
+            this.Rect = Rect;
+        }
+    }
+
     internal static class LGuiContext
     {
         internal static LGuiIO IO = new LGuiIO();
+        internal static LGuiFont Font = LGuiFont.Default;
+
         internal static Stack<int> IDStack = new Stack<int>();
         internal static Stack<LGuiFrameContext> FrameContextStack = new Stack<LGuiFrameContext>();
         internal static Stack<int> ControlWidthStack = new Stack<int>();
@@ -72,10 +88,10 @@ namespace LiteGui
         internal static int HoveredID = 0;
         internal static int FrameCount = 0;
         internal static int PreviousControlID = 0;
-        internal static int WindowID = 0;
         internal static LGuiRect ActiveRect = LGuiRect.Zero;
 
-        internal static LGuiFont Font = LGuiFont.Default;
+        internal static LGuiWindowContext FocusWindow = null;
+        internal static LGuiWindowContext CurrentWindow = null;
 
         internal static void Begin()
         {
@@ -88,6 +104,8 @@ namespace LiteGui
             FrameContextStack.Clear();
 
             IO.Begin();
+
+            CurrentWindow = null;
 
             BeginFrame(new LGuiFrameContext(LGuiSettings.DefaultFrameTitle, new LGuiRect(LGuiVec2.Zero, IO.DisplaySize)), false);
         }
@@ -111,17 +129,19 @@ namespace LiteGui
         internal static void Clear()
         {
             LGuiContextCache.Clear();
+
             IO.Clear();
-            
+            Font = LGuiFont.Default;
+
             FocusID = 0;
             ActiveID = 0;
             HoveredID = 0;
             FrameCount = 0;
             PreviousControlID = 0;
-            WindowID = 0;
             ActiveRect = LGuiRect.Zero;
 
-            Font = LGuiFont.Default;
+            CurrentWindow = null;
+            FocusWindow = null;
         }
 
         internal static void SetPreviousControlID(int ID)
