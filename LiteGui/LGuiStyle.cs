@@ -100,6 +100,8 @@ namespace LiteGui
         RadioButtonRadius   = 07,
         CheckBoxSize        = 08,
         SliderSize          = 09,
+        HeaderSize          = 10,
+        LargeControlLength  = 11,
     }
 
     internal class LGuiStyleValueBackup
@@ -171,8 +173,10 @@ namespace LiteGui
             Values[(int)LGuiStyleValueIndex.GrabMinSizeX]           = 10.0f;
             Values[(int)LGuiStyleValueIndex.GrabMinSizeY]           = 10.0f;
             Values[(int)LGuiStyleValueIndex.RadioButtonRadius]      = 10.0f;
-            Values[(int)LGuiStyleValueIndex.CheckBoxSize]           = 20.0f;
+            Values[(int)LGuiStyleValueIndex.CheckBoxSize]           = 18.0f;
             Values[(int)LGuiStyleValueIndex.SliderSize]             = 16.0f;
+            Values[(int)LGuiStyleValueIndex.HeaderSize]             = 18.0f;
+            Values[(int)LGuiStyleValueIndex.LargeControlLength]     = 200.0f;
         }
 
         internal static LGuiColor GetColor(LGuiStyleColorIndex Index)

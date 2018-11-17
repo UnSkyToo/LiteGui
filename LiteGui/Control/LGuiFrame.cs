@@ -9,7 +9,7 @@ namespace LiteGui.Control
             var Rect = LGuiLayout.DoLayout(Size);
             Begin(Title, Rect, true);
         }
-
+        
         internal static void Begin(string Title, LGuiRect Rect, bool IsChild = true)
         {
             var FullTitle = $"{LGuiContext.GetCurrentFrame().Title}/{Title}";

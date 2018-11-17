@@ -5,6 +5,7 @@ namespace LiteGuiDemo.Demos
 {
     internal class DemoWhole : DemoBase
     {
+        private Random Rnd_ = new Random((int)DateTime.Now.Ticks);
         private bool Value_;
         private int RValue_ = 1;
         private float SliderValue_ = 0;
@@ -15,7 +16,8 @@ namespace LiteGuiDemo.Demos
         private LGuiColor Color_ = LGuiColor.White;
         private int ItemIndex = 0;
         private string[] Items = new string[] { "item1", "item2", "item3", "item4", "item5", "item6", "item7", "item8", "item9", "item10" };
-        
+        private int ProBar_ = 0;
+
         internal DemoWhole()
         {
         }
@@ -73,6 +75,13 @@ namespace LiteGuiDemo.Demos
             {
                 LGui.ColorPicker("ColorPicker1", ref Color_);
                 LGui.EndPopup();
+            }
+
+            LGui.ProgressBar("Bar", ProBar_ / 1000.0f);
+            ProBar_ += Rnd_.Next(0, 5);
+            if (ProBar_ > 1000)
+            {
+                ProBar_ = 0;
             }
 
             LGui.ListBox("ListBox1", ref ItemIndex, Items, new LGuiVec2(150, 200));

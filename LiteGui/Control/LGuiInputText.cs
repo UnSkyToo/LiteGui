@@ -9,10 +9,10 @@ namespace LiteGui.Control
         {
             var TextSize = LGuiConvert.GetTextSize(Value, LGuiContext.Font);
 
-            var Size = new LGuiVec2(LGuiSettings.InputTextWidth, TextSize.Y + 2);
+            var Size = new LGuiVec2(LGuiStyle.GetValue(LGuiStyleValueIndex.LargeControlLength), TextSize.Y + 2);
             if ((Flags & LGuiInputTextFlags.Multiline) == LGuiInputTextFlags.Multiline)
             {
-                Size.Y = LGuiSettings.InputTextWidth;
+                Size.Y = LGuiStyle.GetValue(LGuiStyleValueIndex.LargeControlLength);
             }
 
             var Rect = LGuiLayout.DoLayout(Size);

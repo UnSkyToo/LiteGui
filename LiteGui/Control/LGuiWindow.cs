@@ -47,7 +47,7 @@ namespace LiteGui.Control
                 var TitleRect = new LGuiRect(Rect.Pos, new LGuiVec2(Rect.Width, LGuiContext.Font.FontHeight));
                 LGuiGraphics.DrawRect(Rect, LGuiStyleColorIndex.Frame, true);
                 LGuiGraphics.DrawRect(TitleRect, LGuiStyleColorIndex.HeaderActive, true);
-                LGuiGraphics.DrawText(Title, TitleRect.Pos + new LGuiVec2(20, 0), LGuiStyleColorIndex.Text);
+                LGuiGraphics.DrawText(Title, TitleRect.Pos + new LGuiVec2(LGuiStyle.GetValue(LGuiStyleValueIndex.HeaderSize), 0), LGuiStyleColorIndex.Text);
                 LGuiGraphics.DrawTriangle(
                     new LGuiVec2(TitleRect.X + 5, TitleRect.Top + 5),
                     new LGuiVec2(TitleRect.X + 15, TitleRect.Top + 5),

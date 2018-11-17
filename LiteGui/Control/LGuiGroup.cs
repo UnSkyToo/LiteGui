@@ -10,7 +10,7 @@ namespace LiteGui.Control
             var ID = LGuiHash.CalculateID(FullTitle);
             LGuiContext.SetPreviousControlID(ID);
 
-            var Rect = LGuiLayout.DoLayout(LGuiSettings.GroupTileSize);
+            var Rect = LGuiLayout.DoLayout(new LGuiVec2(LGuiStyle.GetValue(LGuiStyleValueIndex.LargeControlLength), LGuiStyle.GetValue(LGuiStyleValueIndex.HeaderSize)));
             if (!LGuiMisc.CheckVisible(ref Rect))
             {
                 return false;

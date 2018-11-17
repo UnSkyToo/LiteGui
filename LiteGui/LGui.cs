@@ -71,6 +71,11 @@ namespace LiteGui
             LGuiFrame.Begin(Title, Size);
         }
 
+        public static void BeginFrame(string Title, LGuiRect Rect)
+        {
+            LGuiFrame.Begin(Title, Rect);
+        }
+
         public static void EndFrame()
         {
             LGuiFrame.End();
@@ -279,6 +284,11 @@ namespace LiteGui
         public static bool Selectable(string Text, bool Selected, float Width)
         {
             return LGuiSelectable.OnProcess(Text, Selected, Width);
+        }
+
+        public static void ProgressBar(string Title, float Value)
+        {
+            LGuiProgressBar.OnProcess(Title, Value);
         }
 
         public static bool PreviousControlIsHovered()

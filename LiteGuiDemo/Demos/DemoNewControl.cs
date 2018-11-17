@@ -24,6 +24,12 @@ namespace LiteGuiDemo.Demos
         
         internal override void Render()
         {
+            LGui.BeginFrame("Test", new LGuiRect(500, 5, 400, 400));
+
+            LGui.Button("asd");
+
+            LGui.EndFrame();
+
             if (LGui.BeginWindow("First Window", new LGuiVec2(300, 300)))
             {
                 if (LGui.Button("Click Me"))
@@ -46,6 +52,8 @@ namespace LiteGuiDemo.Demos
             }
 
             LGui.Text(LGuiColor.Red, "aaa");
+
+            LGui.ProgressBar("bar1", Color.R);
         }
     }
 }

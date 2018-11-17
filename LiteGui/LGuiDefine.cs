@@ -7,9 +7,6 @@ namespace LiteGui
         internal static string DefaultFrameTitle = "##System Frame##";
         internal static string DefaultToolTipsTitle = "##ToolTips##";
         internal static string DefaultTextureTitle = "##Texture##";
-        
-        internal static float InputTextWidth = 200.0f;
-        internal static LGuiVec2 GroupTileSize = new LGuiVec2(200.0f, 18.0f);
     }
 
     internal enum LGuiCommandLevel : byte
