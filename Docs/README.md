@@ -17,9 +17,6 @@ Plan more platforms in the future
 3. [x] Frame
     1. [x] Clipping
     2. [x] Scrollbar
-    3. [ ] Drag
-    4. [ ] Title
-    5. [ ] Sizable
 4. [x] Group
 5. [x] InputText
     1. [x] Input Filter
@@ -49,6 +46,11 @@ Plan more platforms in the future
 21. [x] Selectable
 22. [x] Combox
 23. [x] Window
+    1. [x] Drag
+    2. [x] Title
+    3. [ ] Sizable
+    4. [ ] Collapse
+24. [x] ProgressBar
 
 ## Usage
 
