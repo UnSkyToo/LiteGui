@@ -11,6 +11,9 @@ namespace LiteGui
         public static Func<string> GetClipboardTextFunc = null;
         public static Action<string> SetClipboardTextFunc = null;
 
+        public static Func<int, LGuiVec2> GetTextureIDSizeFunc = null;
+        public static Func<string, LGuiVec2> GetTexturePathSizeFunc = null;
+
         internal static LGuiVec2 GetTextSize(string Text, LGuiFont Font)
         {
             if (string.IsNullOrEmpty(Text))
@@ -42,6 +45,16 @@ namespace LiteGui
         internal static void SetClipboardText(string Text)
         {
             SetClipboardTextFunc?.Invoke(Text);
+        }
+
+        internal static LGuiVec2 GetTextureIDSize(int TextureID)
+        {
+            return GetTextureIDSizeFunc?.Invoke(TextureID) ?? LGuiVec2.Zero;
+        }
+
+        internal static LGuiVec2 GetTexturePathSize(string FilePath)
+        {
+            return GetTexturePathSizeFunc?.Invoke(FilePath) ?? LGuiVec2.Zero;
         }
     }
 }

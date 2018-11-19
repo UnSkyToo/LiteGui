@@ -13,6 +13,8 @@ namespace LiteGuiDemo
             LGuiConvert.GetTextSizeFunc = OnGetTextSize;
             LGuiConvert.GetClipboardTextFunc = OnGetClipboardText;
             LGuiConvert.SetClipboardTextFunc = OnSetClipboardText;
+            LGuiConvert.GetTextureIDSizeFunc = OnGetTextureIDSize;
+            LGuiConvert.GetTexturePathSizeFunc = OnGetTexturePathSize;
         }
 
         public static void SetDevice(Graphics Device)
@@ -35,6 +37,26 @@ namespace LiteGuiDemo
         private static void OnSetClipboardText(string Text)
         {
             Clipboard.SetText(Text);
+        }
+
+        private static LGuiVec2 OnGetTextureIDSize(int ID)
+        {
+            var Tex = TextureCache.Get(ID);
+            if (Tex == null)
+            {
+                return LGuiVec2.Zero;
+            }
+            return new LGuiVec2(Tex.Width, Tex.Height);
+        }
+
+        private static LGuiVec2 OnGetTexturePathSize(string FilePath)
+        {
+            var Tex = TextureCache.Get(FilePath);
+            if (Tex == null)
+            {
+                return LGuiVec2.Zero;
+            }
+            return new LGuiVec2(Tex.Width, Tex.Height);
         }
     }
 }

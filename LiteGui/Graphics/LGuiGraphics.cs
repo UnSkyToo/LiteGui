@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 
 namespace LiteGui.Graphics
 {
@@ -140,9 +139,14 @@ namespace LiteGui.Graphics
             GetCurrentList().DrawText(Text, Pos, LGuiStyle.GetColor(ColorIndex), LGuiContext.Font);
         }
 
-        internal static void DrawTexture(int ID, LGuiRect SrcRect, LGuiRect DstRect)
+        internal static void DrawTexture(int TextureID, LGuiRect SrcRect, LGuiRect DstRect)
         {
-            GetCurrentList().DrawTexture(ID, SrcRect, DstRect);
+            GetCurrentList().DrawTexture(TextureID, SrcRect, DstRect);
+        }
+
+        internal static void DrawTexture(string FilePath, LGuiRect SrcRect, LGuiRect DstRect)
+        {
+            GetCurrentList().DrawTexture(FilePath, SrcRect, DstRect);
         }
 
         internal static void DrawPrimitive(LGuiRect Rect, LGuiVec2[] Vertices, LGuiColor[] Colors, int[] Indices)

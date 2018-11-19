@@ -28,6 +28,8 @@ namespace LiteGuiDemo.Demos
 
             LGui.Button("asd");
 
+            LGui.Texture("1.jpg");
+
             LGui.EndFrame();
 
             if (LGui.BeginWindow("First Window", new LGuiVec2(300, 300)))

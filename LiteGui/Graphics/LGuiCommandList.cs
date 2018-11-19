@@ -28,6 +28,11 @@ namespace LiteGui.Graphics
 
         internal void AddCommandList(LGuiCommandList List)
         {
+            if (List.Commands_.Count == 0)
+            {
+                return;
+            }
+
             Commands_.AddRange(List.Commands_);
         }
 
@@ -79,9 +84,15 @@ namespace LiteGui.Graphics
             AddCommand(Cmd);
         }
 
-        public void DrawTexture(int ID, LGuiRect SrcRect, LGuiRect DstRect)
+        public void DrawTexture(int TextureID, LGuiRect SrcRect, LGuiRect DstRect)
         {
-            var Cmd = new DrawTextureCommand(ID, SrcRect, DstRect);
+            var Cmd = new DrawTextureIDCommand(TextureID, SrcRect, DstRect);
+            AddCommand(Cmd);
+        }
+
+        public void DrawTexture(string FilePath, LGuiRect SrcRect, LGuiRect DstRect)
+        {
+            var Cmd = new DrawTexturePathCommand(FilePath, SrcRect, DstRect);
             AddCommand(Cmd);
         }
 
@@ -126,8 +137,11 @@ namespace LiteGui.Graphics
                     case DrawTextCommand Entity:
                         Executor.DrawText(Entity.Text, Entity.Pos, Entity.Color, Entity.Font);
                         break;
-                    case DrawTextureCommand Entity:
-                        Executor.DrawTexture(Entity.ID, Entity.SrcRect, Entity.DstRect);
+                    case DrawTextureIDCommand Entity:
+                        Executor.DrawTexture(Entity.TextureID, Entity.SrcRect, Entity.DstRect);
+                        break;
+                    case DrawTexturePathCommand Entity:
+                        Executor.DrawTexture(Entity.FilePath, Entity.SrcRect, Entity.DstRect);
                         break;
                     case DrawPrimitiveCommand Entity:
                         Executor.DrawPrimitive(Entity.Rect, Entity.Vertices, Entity.Colors, Entity.Indices);

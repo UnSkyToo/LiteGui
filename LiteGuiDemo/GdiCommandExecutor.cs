@@ -127,9 +127,23 @@ namespace LiteGuiDemo
             
         }
 
-        public override void DrawTexture(int ID, LGuiRect SrcRect, LGuiRect DstRect)
+        public override void DrawTexture(int TextureID, LGuiRect SrcRect, LGuiRect DstRect)
         {
-            var Texture = TextureCache.Get(ID);
+            var Texture = TextureCache.Get(TextureID);
+            if (Texture != null)
+            {
+                Device_.DrawImage(Texture,
+                    new RectangleF((int)DstRect.X, (int)DstRect.Y, (int)DstRect.Width, (int)DstRect.Height),
+                    new RectangleF((int)SrcRect.X, (int)SrcRect.Y,
+                        (int)SrcRect.Width == 0 ? Texture.Width : (int)SrcRect.Width,
+                        (int)SrcRect.Height == 0 ? Texture.Height : (int)SrcRect.Height),
+                    GraphicsUnit.Pixel);
+            }
+        }
+
+        public override void DrawTexture(string FilePath, LGuiRect SrcRect, LGuiRect DstRect)
+        {
+            var Texture = TextureCache.Get(FilePath);
             if (Texture != null)
             {
                 Device_.DrawImage(Texture,

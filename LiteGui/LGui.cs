@@ -229,6 +229,11 @@ namespace LiteGui
             LGuiSeparator.OnProcess(Color);
         }
 
+        public static void Texture(int TextureID)
+        {
+            Texture(TextureID, LGuiRect.Zero, LGuiVec2.Zero);
+        }
+
         public static void Texture(int TextureID, LGuiVec2 DstSize)
         {
             Texture(TextureID, LGuiRect.Zero, DstSize);
@@ -238,7 +243,22 @@ namespace LiteGui
         {
             LGuiTexture.OnProcess(TextureID, SrcRect, DstSize);
         }
-        
+
+        public static void Texture(string FilePath)
+        {
+            Texture(FilePath, LGuiRect.Zero, LGuiVec2.Zero);
+        }
+
+        public static void Texture(string FilePath, LGuiVec2 DstSize)
+        {
+            Texture(FilePath, LGuiRect.Zero, DstSize);
+        }
+
+        public static void Texture(string FilePath, LGuiRect SrcRect, LGuiVec2 DstSize)
+        {
+            LGuiTexture.OnProcess(FilePath, SrcRect, DstSize);
+        }
+
         public static int RadioButton(string Title, int Index, int Value)
         {
             return LGuiRadioButton.OnProcess(Title, Index, Value);

@@ -11,6 +11,7 @@
         void DrawCircle(LGuiVec2 Center, float Radius, LGuiColor Color, bool IsFill);
         void DrawText(string Text, LGuiVec2 Pos, LGuiColor Color, LGuiFont Font);
         void DrawTexture(int ID, LGuiRect SrcRect, LGuiRect DstRect);
+        void DrawTexture(string FilePath, LGuiRect SrcRect, LGuiRect DstRect);
         void DrawPrimitive(LGuiRect Rect, LGuiVec2[] Vertices, LGuiColor[] Colors, int[] Indices);
     }
 }

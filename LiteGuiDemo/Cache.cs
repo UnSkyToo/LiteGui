@@ -99,6 +99,18 @@ namespace LiteGuiDemo
             return null;
         }
 
+        internal static Bitmap Get(string FilePath)
+        {
+            var FullPath = FileHelper.GetFileFullPath(FilePath);
+            var ID = FullPath.GetHashCode();
+            if (!TextureCache_.ContainsKey(ID))
+            {
+                var Texture = new Bitmap(FullPath);
+                TextureCache_.Add(ID, Texture);
+            }
+            return TextureCache_[ID];
+        }
+
         internal static int Add(string FilePath)
         {
             var FullPath = FileHelper.GetFileFullPath(FilePath);
@@ -106,7 +118,7 @@ namespace LiteGuiDemo
             TextureCache_.Add(++ID_, Texture);
             return ID_;
         }
-
+        
         internal static void Remove(int ID)
         {
             TextureCache_.Remove(ID);

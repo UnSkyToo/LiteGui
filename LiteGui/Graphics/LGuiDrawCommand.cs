@@ -98,15 +98,29 @@
         }
     }
 
-    internal class DrawTextureCommand : ILGuiCommand
+    internal class DrawTextureIDCommand : ILGuiCommand
     {
-        internal int ID { get; }
+        internal int TextureID { get; }
         internal LGuiRect SrcRect { get; }
         internal LGuiRect DstRect { get; }
 
-        internal DrawTextureCommand(int ID, LGuiRect SrcRect, LGuiRect DstRect)
+        internal DrawTextureIDCommand(int TextureID, LGuiRect SrcRect, LGuiRect DstRect)
         {
-            this.ID = ID;
+            this.TextureID = TextureID;
+            this.SrcRect = SrcRect;
+            this.DstRect = DstRect;
+        }
+    }
+
+    internal class DrawTexturePathCommand : ILGuiCommand
+    {
+        internal string FilePath { get; }
+        internal LGuiRect SrcRect { get; }
+        internal LGuiRect DstRect { get; }
+
+        internal DrawTexturePathCommand(string FilePath, LGuiRect SrcRect, LGuiRect DstRect)
+        {
+            this.FilePath = FilePath;
             this.SrcRect = SrcRect;
             this.DstRect = DstRect;
         }
