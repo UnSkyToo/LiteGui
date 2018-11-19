@@ -4,16 +4,16 @@ namespace LiteGui.Control
 {
     internal static class LGuiSlider
     {
-        internal static bool OnProcess(string Title, ref float Value, float Min, float Max, float Step, bool IsHorizontal, bool ShowValue, float Length)
+        internal static bool OnProcess(string Title, ref float Value, float Min, float Max, float Step, bool IsHorizontal, string Format, float Length)
         {
             var Size = IsHorizontal
                 ? new LGuiVec2(Length, LGuiStyle.GetValue(LGuiStyleValueIndex.SliderSize))
                 : new LGuiVec2(LGuiStyle.GetValue(LGuiStyleValueIndex.SliderSize), Length);
             var Rect = LGuiLayout.DoLayout(Size);
-            return OnProcess(Title, ref Value, Min, Max, Step, IsHorizontal, ShowValue, Rect);
+            return OnProcess(Title, ref Value, Min, Max, Step, IsHorizontal, Format, Rect);
         }
 
-        internal static bool OnProcess(string Title, ref float Value, float Min, float Max, float Step, bool IsHorizontal, bool ShowValue, LGuiRect Rect)
+        internal static bool OnProcess(string Title, ref float Value, float Min, float Max, float Step, bool IsHorizontal, string Format, LGuiRect Rect)
         {
             var ID = LGuiHash.CalculateID(Title);
             LGuiContext.SetPreviousControlID(ID);
@@ -40,9 +40,9 @@ namespace LiteGui.Control
             LGuiGraphics.DrawRect(Rect, LGuiStyleColorIndex.Frame, true);
             LGuiGraphics.DrawRect(Rect, LGuiStyleColorIndex.Border, false);
             LGuiGraphics.DrawRect(GrabRect, GrabColorIndex, true);
-            if (ShowValue)
+            if (!string.IsNullOrWhiteSpace(Format))
             {
-                var Text = $"{NewValue:0.00}";
+                var Text = string.Format(Format, NewValue);
                 var TextSize = LGuiConvert.GetTextSize(Text, LGuiContext.Font);
                 LGuiGraphics.DrawText(Text, new LGuiVec2(Rect.X + (Rect.Width - TextSize.X) / 2.0f, Rect.Y + (Rect.Height - TextSize.Y) / 2.0f), LGuiStyleColorIndex.Text);
             }
@@ -72,16 +72,16 @@ namespace LiteGui.Control
             return ValueChanged;
         }
 
-        internal static bool OnProcess(string Title, ref int Value, int Min, int Max, int Step, bool IsHorizontal, bool ShowValue, float Length)
+        internal static bool OnProcess(string Title, ref int Value, int Min, int Max, int Step, bool IsHorizontal, string Format, float Length)
         {
             var Size = IsHorizontal
                 ? new LGuiVec2(Length, LGuiStyle.GetValue(LGuiStyleValueIndex.SliderSize))
                 : new LGuiVec2(LGuiStyle.GetValue(LGuiStyleValueIndex.SliderSize), Length);
             var Rect = LGuiLayout.DoLayout(Size);
-            return OnProcess(Title, ref Value, Min, Max, Step, IsHorizontal, ShowValue, Rect);
+            return OnProcess(Title, ref Value, Min, Max, Step, IsHorizontal, Format, Rect);
         }
 
-        internal static bool OnProcess(string Title, ref int Value, int Min, int Max, int Step, bool IsHorizontal, bool ShowValue, LGuiRect Rect)
+        internal static bool OnProcess(string Title, ref int Value, int Min, int Max, int Step, bool IsHorizontal, string Format, LGuiRect Rect)
         {
             var ID = LGuiHash.CalculateID(Title);
             LGuiContext.SetPreviousControlID(ID);
@@ -108,9 +108,9 @@ namespace LiteGui.Control
             LGuiGraphics.DrawRect(Rect, LGuiStyleColorIndex.Frame, true);
             LGuiGraphics.DrawRect(Rect, LGuiStyleColorIndex.Border, false);
             LGuiGraphics.DrawRect(GrabRect, GrabColorIndex, true);
-            if (ShowValue)
+            if (!string.IsNullOrWhiteSpace(Format))
             {
-                var Text = NewValue.ToString();
+                var Text = string.Format(Format, NewValue);
                 var TextSize = LGuiConvert.GetTextSize(Text, LGuiContext.Font);
                 LGuiGraphics.DrawText(Text, new LGuiVec2(Rect.X + (Rect.Width - TextSize.X) / 2.0f, Rect.Y + (Rect.Height - TextSize.Y) / 2.0f), LGuiStyleColorIndex.Text);
             }

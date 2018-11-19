@@ -62,7 +62,7 @@ namespace LiteGui.Control
                         Width,
                         LGuiStyle.GetValue(LGuiStyleValueIndex.ControlSpacingX),
                         true,
-                        false,
+                        string.Empty,
                         new LGuiRect(FrameContext.Rect.X, FrameContext.Rect.Bottom - SliderSize,
                             FrameContext.Rect.Width - SliderSize, SliderSize));
                     FrameContext.Size.Y -= SliderSize;
@@ -81,7 +81,7 @@ namespace LiteGui.Control
                         Height,
                         LGuiStyle.GetValue(LGuiStyleValueIndex.ControlSpacingY),
                         false,
-                        false,
+                        string.Empty,
                         new LGuiRect(FrameContext.Rect.Right - SliderSize,
                             FrameContext.Rect.Y, SliderSize, FrameContext.Rect.Height));
                     FrameContext.Size.X -= SliderSize;

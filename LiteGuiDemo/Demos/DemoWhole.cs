@@ -142,7 +142,7 @@ namespace LiteGuiDemo.Demos
                 for (var Index = 0; Index < 50; ++Index)
                 {
                     LGui.Text("{0} Text", Index);
-                    LGui.Slider("Slider" + Index, ref SliderValue_, 0, 1, 0.1f, true, Value_, 200);
+                    LGui.Slider("Slider" + Index, ref SliderValue_, 0, 1, 0.1f, true, Value_ ? "{0:0.0}" : "", 200);
                 }
 
                 if (LGui.BeginGroup("Test Group 1"))

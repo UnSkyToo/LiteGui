@@ -17,7 +17,6 @@ namespace LiteGui
         High,
         VeryHigh,
         Window,
-        FocusWindow,
         Popup,
         Tips,
     }
@@ -164,10 +163,11 @@ namespace LiteGui
     [Flags]
     public enum LGuiWindowFlags : uint
     {
-        None = 0,
-        NoMove = 1 << 0,
-        NoTitle = 1 << 1,
-        NoFocus = 1 << 2,
+        None        = 0,
+        NoMove      = 1 << 0,
+        NoTitle     = 1 << 1,
+        NoFocus     = 1 << 2,
+        NoCollapse  = 1 << 3,
     }
 
     public struct LGuiVec2

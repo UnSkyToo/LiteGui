@@ -1,4 +1,6 @@
-﻿namespace LiteGui
+﻿using LiteGui.Control;
+
+namespace LiteGui
 {
     internal static class LGuiMisc
     {
@@ -193,14 +195,10 @@
             {
                 return;
             }
-
-            // Ignore other window control when mousepos in FocusWindow
-            if (LGuiContext.FocusWindow != null && LGuiContext.CurrentWindow != null)
+            
+            if (!LGuiWindow.CurrentWindowCanHandleMouseMsg(true))
             {
-                if (LGuiContext.CurrentWindow.ID != LGuiContext.FocusWindow.ID && Contains(ref LGuiContext.FocusWindow.Rect, ref LGuiContext.IO.MousePos))
-                {
-                    return;
-                }
+                return;
             }
 
             if (Contains(ref Rect, ref LGuiContext.IO.MousePos))

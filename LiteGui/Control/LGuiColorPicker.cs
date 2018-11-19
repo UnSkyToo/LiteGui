@@ -102,28 +102,28 @@ namespace LiteGui.Control
             var RgbValueChanged = false;
 
             LGuiGraphics.DrawText("R:", new LGuiVec2(Pos.X, Pos.Y), LGuiStyleColorIndex.Text);
-            if (LGuiSlider.OnProcess($"{Title}_RedSlider", ref R, 0, 255, 1, true, true,
+            if (LGuiSlider.OnProcess($"{Title}_RedSlider", ref R, 0, 255, 1, true, "{0}",
                 new LGuiRect(Pos.X + TitleWidth, Pos.Y, Length - TitleWidth, SliderSize)))
             {
                 RgbValueChanged = true;
             }
 
             LGuiGraphics.DrawText("G:", new LGuiVec2(Pos.X, Pos.Y + SliderSize + SpacingY), LGuiStyleColorIndex.Text);
-            if (LGuiSlider.OnProcess($"{Title}_GreenSlider", ref G, 0, 255, 1, true, true,
+            if (LGuiSlider.OnProcess($"{Title}_GreenSlider", ref G, 0, 255, 1, true, "{0}",
                 new LGuiRect(Pos.X + TitleWidth, Pos.Y + SliderSize + SpacingY, Length - TitleWidth, SliderSize)))
             {
                 RgbValueChanged = true;
             }
 
             LGuiGraphics.DrawText("B:", new LGuiVec2(Pos.X, Pos.Y + (SliderSize + SpacingY) * 2.0f), LGuiStyleColorIndex.Text);
-            if (LGuiSlider.OnProcess($"{Title}_BlueSlider", ref B, 0, 255, 1, true, true,
+            if (LGuiSlider.OnProcess($"{Title}_BlueSlider", ref B, 0, 255, 1, true, "{0}",
                 new LGuiRect(Pos.X + TitleWidth, Pos.Y + (SliderSize + SpacingY) * 2.0f, Length - TitleWidth, SliderSize)))
             {
                 RgbValueChanged = true;
             }
 
             LGuiGraphics.DrawText("A:", new LGuiVec2(Pos.X, Pos.Y + (SliderSize + SpacingY) * 3.0f), LGuiStyleColorIndex.Text);
-            if (LGuiSlider.OnProcess($"{Title}_AlphaSlider", ref A, 0, 255, 1, true, true,
+            if (LGuiSlider.OnProcess($"{Title}_AlphaSlider", ref A, 0, 255, 1, true, "{0}",
                 new LGuiRect(Pos.X + TitleWidth, Pos.Y + (SliderSize + SpacingY) * 3.0f, Length - TitleWidth, SliderSize)))
             {
                 RgbValueChanged = true;
@@ -145,21 +145,21 @@ namespace LiteGui.Control
             var HsvValueChanged = false;
 
             LGuiGraphics.DrawText("H:", new LGuiVec2(Pos.X, Pos.Y), LGuiStyleColorIndex.Text);
-            if (LGuiSlider.OnProcess($"{Title}_HueSlider", ref Hsv.R, 0.0f, 1.0f, 0.005f, true, true,
+            if (LGuiSlider.OnProcess($"{Title}_HueSlider", ref Hsv.R, 0.0f, 1.0f, 0.005f, true, "{0:0.00}",
                 new LGuiRect(Pos.X + TitleWidth, Pos.Y, Length - TitleWidth, SliderSize)))
             {
                 HsvValueChanged = true;
             }
 
             LGuiGraphics.DrawText("S:", new LGuiVec2(Pos.X, Pos.Y + SliderSize + SpacingY), LGuiStyleColorIndex.Text);
-            if (LGuiSlider.OnProcess($"{Title}_SaturationSlider", ref Hsv.G, 0.0f, 1.0f, 0.005f, true, true,
+            if (LGuiSlider.OnProcess($"{Title}_SaturationSlider", ref Hsv.G, 0.0f, 1.0f, 0.005f, true, "{0:0.00}",
                 new LGuiRect(Pos.X + TitleWidth, Pos.Y + SliderSize + SpacingY, Length - TitleWidth, SliderSize)))
             {
                 HsvValueChanged = true;
             }
 
             LGuiGraphics.DrawText("V:", new LGuiVec2(Pos.X, Pos.Y + (SliderSize + SpacingY) * 2.0f), LGuiStyleColorIndex.Text);
-            if (LGuiSlider.OnProcess($"{Title}_ValueSlider", ref Hsv.B, 0.0f, 1.0f, 0.005f, true, true,
+            if (LGuiSlider.OnProcess($"{Title}_ValueSlider", ref Hsv.B, 0.0f, 1.0f, 0.005f, true, "{0:0.00}",
                 new LGuiRect(Pos.X + TitleWidth, Pos.Y + (SliderSize + SpacingY) * 2.0f, Length - TitleWidth, SliderSize)))
             {
                 HsvValueChanged = true;

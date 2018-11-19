@@ -64,14 +64,18 @@ namespace LiteGui
     {
         internal string Title = string.Empty;
         internal int ID = 0;
+        internal int Order = 0;
         internal LGuiRect Rect = LGuiRect.Zero;
         internal bool Moveable = true;
         internal bool Focusable = true;
+        internal LGuiVec2 MoveOriginPos = LGuiVec2.Zero;
+        internal LGuiCommandList DrawList = new LGuiCommandList();
 
-        internal LGuiWindowContext(string Title, int ID, LGuiRect Rect, bool Moveable, bool Focusable)
+        internal LGuiWindowContext(string Title, int ID, int Order, LGuiRect Rect, bool Moveable, bool Focusable)
         {
             this.Title = Title;
             this.ID = ID;
+            this.Order = Order;
             this.Rect = Rect;
             this.Moveable = Moveable;
             this.Focusable = Focusable;
@@ -94,9 +98,21 @@ namespace LiteGui
         internal static int PreviousControlID = 0;
         internal static LGuiRect ActiveRect = LGuiRect.Zero;
 
-        internal static LGuiWindowContext FocusWindow = null;
-        internal static LGuiWindowContext CurrentWindow = null;
+        internal static void Clear()
+        {
+            LGuiContextCache.Clear();
 
+            IO.Clear();
+            Font = LGuiFont.Default;
+
+            FocusID = 0;
+            ActiveID = 0;
+            HoveredID = 0;
+            FrameCount = 0;
+            PreviousControlID = 0;
+            ActiveRect = LGuiRect.Zero;
+        }
+        
         internal static void Begin()
         {
             HoveredID = 0;
@@ -108,9 +124,7 @@ namespace LiteGui
             FrameContextStack.Clear();
 
             IO.Begin();
-
-            CurrentWindow = null;
-
+            
             BeginFrame(new LGuiFrameContext(LGuiSettings.DefaultFrameTitle, new LGuiRect(LGuiVec2.Zero, IO.DisplaySize)), false);
         }
 
@@ -128,24 +142,6 @@ namespace LiteGui
             }
 
             IO.End();
-        }
-
-        internal static void Clear()
-        {
-            LGuiContextCache.Clear();
-
-            IO.Clear();
-            Font = LGuiFont.Default;
-
-            FocusID = 0;
-            ActiveID = 0;
-            HoveredID = 0;
-            FrameCount = 0;
-            PreviousControlID = 0;
-            ActiveRect = LGuiRect.Zero;
-
-            CurrentWindow = null;
-            FocusWindow = null;
         }
 
         internal static void SetPreviousControlID(int ID)
@@ -243,8 +239,7 @@ namespace LiteGui
         internal static Dictionary<string, LGuiColor> ColorPickerHsv = new Dictionary<string, LGuiColor>();
         internal static Dictionary<string, bool> PopupOpen = new Dictionary<string, bool>();
         internal static Dictionary<string, LGuiVec2> PopupPos = new Dictionary<string, LGuiVec2>();
-        internal static Dictionary<string, LGuiRect> WindowRect = new Dictionary<string, LGuiRect>();
-        internal static Dictionary<string, LGuiVec2> WindowOrginPos = new Dictionary<string, LGuiVec2>();
+        internal static Dictionary<string, bool> WindowExpand = new Dictionary<string, bool>();
 
         internal static void Clear()
         {
@@ -254,8 +249,7 @@ namespace LiteGui
             ColorPickerHsv.Clear();
             PopupOpen.Clear();
             PopupPos.Clear();
-            WindowRect.Clear();
-            WindowOrginPos.Clear();
+            WindowExpand.Clear();
         }
 
         internal static LGuiVec2 GetFrameOffset(string Title)
@@ -390,47 +384,25 @@ namespace LiteGui
             }
         }
 
-        internal static LGuiRect GetWindowRect(string Title)
+        internal static bool GetWindowExpand(string Title)
         {
-            if (WindowRect.ContainsKey(Title))
+            if (WindowExpand.ContainsKey(Title))
             {
-                return WindowRect[Title];
+                return WindowExpand[Title];
             }
 
-            return LGuiRect.Zero;
+            return true;
         }
 
-        internal static void SetWindowRect(string Title, LGuiRect Rect)
+        internal static void SetWindowExpand(string Title, bool Expand)
         {
-            if (WindowRect.ContainsKey(Title))
+            if (WindowExpand.ContainsKey(Title))
             {
-                WindowRect[Title] = Rect;
+                WindowExpand[Title] = Expand;
             }
             else
             {
-                WindowRect.Add(Title, Rect);
-            }
-        }
-
-        internal static LGuiVec2 GetWindowOrginPos(string Title)
-        {
-            if (WindowOrginPos.ContainsKey(Title))
-            {
-                return WindowOrginPos[Title];
-            }
-
-            return LGuiVec2.Zero;
-        }
-
-        internal static void SetWindowOrginPos(string Title, LGuiVec2 Pos)
-        {
-            if (WindowOrginPos.ContainsKey(Title))
-            {
-                WindowOrginPos[Title] = Pos;
-            }
-            else
-            {
-                WindowOrginPos.Add(Title, Pos);
+                WindowExpand.Add(Title, Expand);
             }
         }
     }

@@ -42,11 +42,20 @@ namespace LiteGuiDemo.Demos
                 LGui.EndWindow();
             }
 
-            if (LGui.BeginWindow("Second Window", new LGuiRect(400, 100, 300, 300)))
+            if (LGui.BeginWindow("Second Window", new LGuiRect(400, 100, 300, 300), LGuiWindowFlags.NoCollapse))
             {
                 if (LGui.Button("Click Me"))
                 {
                     System.Console.WriteLine("Window2");
+                }
+                LGui.EndWindow();
+            }
+
+            if (LGui.BeginWindow("Third Window", new LGuiRect(200, 300, 300, 300), LGuiWindowFlags.NoTitle))
+            {
+                if (LGui.Button("Click Me"))
+                {
+                    System.Console.WriteLine("Window3");
                 }
                 LGui.EndWindow();
             }

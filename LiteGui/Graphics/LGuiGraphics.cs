@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 namespace LiteGui.Graphics
 {
@@ -9,6 +10,7 @@ namespace LiteGui.Graphics
         private static LGuiCommandList[] CommandList_ = null;
         private static Stack<LGuiCommandLevel> CommandLevelStack_ = null;
         private static LGuiCommandLevel CurrentLevel_ = LGuiCommandLevel.Normal;
+        private static LGuiCommandList TargetCommandList_ = null;
         
         internal static void SetExecutor(LGuiCommandExecutor Executor)
         {
@@ -34,21 +36,30 @@ namespace LiteGui.Graphics
             }
         }
 
+        internal static void SetTargetCommandList(LGuiCommandList TargetCommandList)
+        {
+            TargetCommandList_ = TargetCommandList;
+        }
+
         internal static LGuiCommandList GetCurrentList()
         {
+            if (TargetCommandList_ != null)
+            {
+                return TargetCommandList_;
+            }
+
             return CommandList_[(int)CurrentLevel_];
         }
         
         internal static void Begin()
         {
-            CommandList_ = new LGuiCommandList[9];
+            CommandList_ = new LGuiCommandList[8];
             CommandList_[(int)LGuiCommandLevel.VeryLow] = new LGuiCommandList();
             CommandList_[(int)LGuiCommandLevel.Low] = new LGuiCommandList();
             CommandList_[(int)LGuiCommandLevel.Normal] = new LGuiCommandList();
             CommandList_[(int)LGuiCommandLevel.High] = new LGuiCommandList();
             CommandList_[(int)LGuiCommandLevel.VeryHigh] = new LGuiCommandList();
             CommandList_[(int)LGuiCommandLevel.Window] = new LGuiCommandList();
-            CommandList_[(int)LGuiCommandLevel.FocusWindow] = new LGuiCommandList();
             CommandList_[(int)LGuiCommandLevel.Popup] = new LGuiCommandList();
             CommandList_[(int)LGuiCommandLevel.Tips] = new LGuiCommandList();
 
@@ -67,7 +78,6 @@ namespace LiteGui.Graphics
             CombineCommandList_.AddCommandList(CommandList_[(int)LGuiCommandLevel.High]);
             CombineCommandList_.AddCommandList(CommandList_[(int)LGuiCommandLevel.VeryHigh]);
             CombineCommandList_.AddCommandList(CommandList_[(int)LGuiCommandLevel.Window]);
-            CombineCommandList_.AddCommandList(CommandList_[(int)LGuiCommandLevel.FocusWindow]);
             CombineCommandList_.AddCommandList(CommandList_[(int)LGuiCommandLevel.Popup]);
             CombineCommandList_.AddCommandList(CommandList_[(int)LGuiCommandLevel.Tips]);
 

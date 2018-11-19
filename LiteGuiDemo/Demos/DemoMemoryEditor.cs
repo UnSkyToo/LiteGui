@@ -190,7 +190,7 @@ namespace LiteGuiDemo.Demos
 
             LGui.EndFrame();
 
-            LGui.Slider("Cols", ref Cols, 4, 32, 1, true, true, 200.0f);
+            LGui.Slider("Cols", ref Cols, 4, 32, 1, true, "{0}", 200.0f);
             LGui.SameLine();
             OptShowAscii = LGui.CheckBox("OptShowAscii", OptShowAscii);
             LGui.SameLine();

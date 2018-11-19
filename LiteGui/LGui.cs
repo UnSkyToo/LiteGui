@@ -40,12 +40,14 @@ namespace LiteGui
             LGuiGraphics.Begin();
             LGuiContext.Begin();
             LGuiLayout.Begin();
+            LGuiWindow.Begin();
 
             LGuiGraphics.DrawRect(LGuiContext.GetCurrentFrame().Rect, new LGuiColor(0.06f, 0.06f, 0.06f, 0.94f), true, false);
         }
 
         public static void End()
         {
+            LGuiWindow.End();
             LGuiLayout.End();
             LGuiContext.End();
             LGuiGraphics.End();
@@ -54,6 +56,7 @@ namespace LiteGui
         public static void ClearContext()
         {
             LGuiContext.Clear();
+            LGuiWindow.Clear();
         }
 
         public static void PushID(int ID)
@@ -148,17 +151,17 @@ namespace LiteGui
 
         public static bool BeginWindow(string Title, LGuiVec2 Size, LGuiWindowFlags Flags = LGuiWindowFlags.None)
         {
-            return LGuiWindow.Begin(Title, Size, Flags);
+            return LGuiWindow.BeginWindow(Title, Size, Flags);
         }
 
         public static bool BeginWindow(string Title, LGuiRect Rect, LGuiWindowFlags Flags = LGuiWindowFlags.None)
         {
-            return LGuiWindow.Begin(Title, Rect, Flags);
+            return LGuiWindow.BeginWindow(Title, Rect, Flags);
         }
 
         public static void EndWindow()
         {
-            LGuiWindow.End();
+            LGuiWindow.EndWindow();
         }
 
         public static void Text(string Format, params object[] Args)
@@ -206,14 +209,14 @@ namespace LiteGui
             return LGuiCheckBox.OnProcess(Title, Value);
         }
         
-        public static bool Slider(string Title, ref float Value, float Min, float Max, float Step, bool IsHorizontal = true, bool ShowValue = false, float Length = 200.0f)
+        public static bool Slider(string Title, ref float Value, float Min, float Max, float Step, bool IsHorizontal = true, string Format = "", float Length = 200.0f)
         {
-            return LGuiSlider.OnProcess(Title, ref Value, Min, Max, Step, IsHorizontal, ShowValue, Length);
+            return LGuiSlider.OnProcess(Title, ref Value, Min, Max, Step, IsHorizontal, Format, Length);
         }
         
-        public static bool Slider(string Title, ref int Value, int Min, int Max, int Step, bool IsHorizontal = true, bool ShowValue = false, float Length = 200.0f)
+        public static bool Slider(string Title, ref int Value, int Min, int Max, int Step, bool IsHorizontal = true, string Format = "", float Length = 200.0f)
         {
-            return LGuiSlider.OnProcess(Title, ref Value, Min, Max, Step, IsHorizontal, ShowValue, Length);
+            return LGuiSlider.OnProcess(Title, ref Value, Min, Max, Step, IsHorizontal, Format, Length);
         }
 
         public static void Separator()

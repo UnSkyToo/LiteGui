@@ -28,10 +28,7 @@ namespace LiteGui.Graphics
 
         internal void AddCommandList(LGuiCommandList List)
         {
-            foreach (var Cmd in List.Commands_)
-            {
-                AddCommand(Cmd);
-            }
+            Commands_.AddRange(List.Commands_);
         }
 
         public void Begin()
