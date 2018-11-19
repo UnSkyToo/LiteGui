@@ -49,7 +49,7 @@ Plan more platforms in the future
     1. [x] Drag
     2. [x] Title
     3. [ ] Sizable
-    4. [ ] Collapse
+    4. [x] Collapse
 24. [x] ProgressBar
 
 ## Usage
