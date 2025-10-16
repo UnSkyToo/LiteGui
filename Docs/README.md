@@ -2,11 +2,11 @@
 
 ## Introduction
 
-Immediate Mode GUI from scratch based on .Net Standard 2.0
+Immediate Mode GUI from scratch based on .Net Standard 2.0.
 
-Currently only bindings WinForm
+Currently only bindings WinForms
 
-Plan more platforms in the future
+Planning support for more platforms
 
 ----
 
@@ -23,7 +23,7 @@ Plan more platforms in the future
     2. [x] Undo/Redo
     3. [x] Selection
     4. [x] Copy/Paste/Cut
-    5. [x] Single/Mulit
+    5. [x] Single/Multi
     6. [ ] History
 6. [x] Slider
 7. [x] Separator
@@ -41,10 +41,10 @@ Plan more platforms in the future
 16. [x] ListBox
 17. [ ] Tree
 18. [ ] FreeType
-19. [x] ColorPikcer
+19. [x] ColorPicker
 20. [x] Popup
 21. [x] Selectable
-22. [x] Combox
+22. [x] ComboBox
 23. [x] Window
     1. [x] Drag
     2. [x] Title
@@ -54,9 +54,9 @@ Plan more platforms in the future
 
 ## Usage
 
-Use LGui.XXX() between LGui.Begin() and LGui.End() The next examples to omit this part and variable define
+Use `LGui.XXX()` between `LGui.Begin()` and `LGui.End()`. The following examples omit this part and variable definitions.
 
-Code
+**Code:**
 ```c#
 LGui.Text("Lite Gui {0}", Value);
 if (LGui.Button("Click Me"))
@@ -66,10 +66,10 @@ if (LGui.Button("Click Me"))
 LGui.Slider("SliderV", ref Value, 0, 10, 1);
 ```
 
-Result
+**Result:**
 ![Usage1](https://raw.githubusercontent.com/UnSkyToo/LiteGui/refs/heads/main/Docs/Images/LiteGui_Usage_01.png)
 
-Code
+**Code:**
 ```c#
 if (LGui.ColorButton("ColorButton1", Color, new LGuiVec2(30, 30)))
 {
@@ -86,11 +86,11 @@ LGui.ListBox("ListBox", ref ItemIndex, Items, new LGuiVec2(100, 150));
 LGui.Text("Current Item : {0}", Items[ItemIndex]);
 ```
 
-Result
+**Result:**
 ![Usage2](https://raw.githubusercontent.com/UnSkyToo/LiteGui/refs/heads/main/Docs/Images/LiteGui_Usage_02.gif)
 
 MemoryEditor & Window
 ![Usage3](https://raw.githubusercontent.com/UnSkyToo/LiteGui/refs/heads/main/Docs/Images/LiteGui_Usage_03.gif)
 
-Demo
+**Demo:**
 ![UsageWhole](https://raw.githubusercontent.com/UnSkyToo/LiteGui/refs/heads/main/Docs/Images/LiteGui_Usage_Whole.gif)
