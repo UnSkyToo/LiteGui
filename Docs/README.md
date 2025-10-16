@@ -67,7 +67,7 @@ LGui.Slider("SliderV", ref Value, 0, 10, 1);
 ```
 
 Result
-![Usage1](https://github.com/UnSkyToo/LiteGui/blob/master/Docs/Images/LiteGui_Usage_01.png)
+![Usage1](https://raw.githubusercontent.com/UnSkyToo/LiteGui/refs/heads/main/Docs/Images/LiteGui_Usage_01.png)
 
 Code
 ```c#
@@ -87,10 +87,10 @@ LGui.Text("Current Item : {0}", Items[ItemIndex]);
 ```
 
 Result
-![Usage2](https://github.com/UnSkyToo/LiteGui/blob/master/Docs/Images/LiteGui_Usage_02.gif)
+![Usage2](https://raw.githubusercontent.com/UnSkyToo/LiteGui/refs/heads/main/Docs/Images/LiteGui_Usage_02.gif)
 
 MemoryEditor & Window
-![Usage3](https://github.com/UnSkyToo/LiteGui/blob/master/Docs/Images/LiteGui_Usage_03.gif)
+![Usage3](https://raw.githubusercontent.com/UnSkyToo/LiteGui/refs/heads/main/Docs/Images/LiteGui_Usage_03.gif)
 
 Demo
-![UsageWhole](https://github.com/UnSkyToo/LiteGui/blob/master/Docs/Images/LiteGui_Usage_Whole.gif)
+![UsageWhole](https://raw.githubusercontent.com/UnSkyToo/LiteGui/refs/heads/main/Docs/Images/LiteGui_Usage_Whole.gif)
